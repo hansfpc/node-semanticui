@@ -1,0 +1,23 @@
+extends ../default
+
+block content
+    include ../templates/nav
+    div.ui.container.grid.stackable
+        div.ten.wide.column
+            h3.ui.header.blue.dividing= 'Edit A Product'
+            div.form-newproduct
+                form.ui.form(action='http://localhost:3000/editproduct' method='post')
+                    div.ui.field
+                        label(for='name')= 'Product name'
+                        input(type='text' name='name' placeholder='Name' value=product[0].name)
+                    div.ui.two.fields
+                        div.ui.field
+                            label(for='price')= 'Price'
+                            input(type='text' name='price' placeholder='Price' value=product[0].price)
+                        div.ui.field
+                            label(for='stock')= 'Stock'
+                            input(type='text' name='stock' placeholder='Stock' value=product[0].stock)
+                            input(type='hidden' name='id_product' value=product[0].id_product)
+                    button.ui.button.basic.black= 'Edit product'
+                    div.ui.message.error
+    script(src='/javascripts/validation.js')

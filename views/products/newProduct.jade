@@ -1,0 +1,27 @@
+extends ../default
+
+block content
+    include ../templates/nav
+    div.ui.container.grid.stackable
+        div.ten.wide.column
+            h3.ui.header.blue.dividing= 'Create A New Product'
+            div.form-newproduct
+                form.ui.form(action='http://localhost:3000/addproduct' method='post')
+                    div.ui.field
+                        label(for='name')= 'Product name'
+                        input(type='text' name='name' placeholder='Name')
+                    div.ui.two.fields
+                        div.ui.field
+                            label(for='price')= 'Price'
+                            input(type='text' name='price' placeholder='Price')
+                        div.ui.field
+                            label(for='stock')= 'Stock'
+                            input(type='text' name='stock' placeholder='Stock')
+                    button.ui.button.basic.black= 'Create product'
+                    div.ui.message.error
+            if info != undefined
+                div.ui.message.success
+                    i.close.icon
+                    div.header= 'product created'
+                    p= info
+    script(src='/javascripts/validation.js')
